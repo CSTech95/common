@@ -2,15 +2,15 @@ import { Request, Response, NextFunction } from "express";
 import jwt from "jsonwebtoken";
 
 interface UserPayload {
-	id: string;
-	fName: string;
-	lName: string;
-	email: string;
+	id: string | null;
+	fName?: string | null;
+	lName: string | null;
+	email: string | null;
 	otherInfo: {
-		address: string;
-		state: string;
-		zip: string;
-		createdAt: string;
+		address: string | null;
+		state: string | null;
+		zip: string | null;
+		createdAt: string | null;
 	};
 }
 
