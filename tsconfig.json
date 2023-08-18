@@ -108,5 +108,5 @@
 	},
 	"include": ["lib/**/*.ts"],
 	"exclude": ["node_modules"],
-	"files": ["./src/types.d.ts"]
+	"files": ["./src/middlewares/current-user.ts"]
 }
