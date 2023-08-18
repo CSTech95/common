@@ -17,7 +17,7 @@ interface UserPayload {
 
 declare global {
 	namespace Express {
-		export interface Request {
+		interface Request {
 			currentUser?: UserPayload;
 		}
 	}
@@ -27,9 +27,11 @@ export const currentUser = (req: Request, res: Response, next: NextFunction) => 
 	if (!req.session?.jwt) {
 		return next();
 	}
+
 	try {
-		const payload = jwt.verify(req.session.jwt, process.env.JWT_SECRET!) as UserPayload;
+		const payload = jwt.verify(req.session.jwt, process.env.JWT_KEY!) as UserPayload;
 		req.currentUser = payload;
-	} catch (error) {}
+	} catch (err) {}
+
 	next();
 };
